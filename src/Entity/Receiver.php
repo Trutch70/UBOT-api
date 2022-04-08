@@ -5,9 +5,17 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\GetReceiversAction;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: [
+        'post',
+        'get' => [
+            'controller' => GetReceiversAction::class,
+        ],
+    ],
+)]
 #[ORM\Entity]
 class Receiver
 {
