@@ -3,7 +3,7 @@ version: 0.2
 phases:
     install:
         runtime-versions:
-            php: 8.0.2
+            php: 8.0
     build:
         commands:
             - echo Installing Composer Dependencies on `date`
