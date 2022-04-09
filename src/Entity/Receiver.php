@@ -4,18 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\GetReceiversAction;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource(
-    collectionOperations: [
-        'post',
-        'get' => [
-            'controller' => GetReceiversAction::class,
-        ],
-    ],
-)]
 #[ORM\Entity]
 class Receiver
 {
@@ -30,6 +20,13 @@ class Receiver
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $bankAccount;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $imagePath = null;
+
+    #[ORM\ManyToOne(targetEntity: Location::class)]
+    #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: true)]
+    private ?Location $location;
 
     public function getId(): int
     {
@@ -69,5 +66,25 @@ class Receiver
     public function setBankAccount(string $bankAccount): void
     {
         $this->bankAccount = $bankAccount;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(?string $imagePath): void
+    {
+        $this->imagePath = $imagePath;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?Location $location): void
+    {
+        $this->location = $location;
     }
 }

@@ -1,0 +1,19 @@
+App\Entity\Receiver:
+    attributes:
+        normalization_context:
+            groups:
+                - 'receiver:read'
+                - 'location:read'
+    itemOperations:
+        get: ~
+        patch: ~
+        post_image:
+            method: POST
+            path: /receivers/{id}/image
+            controller: App\Controller\PostReceiverImageAction
+            deserialize: false
+            write: false
+    collectonOperations:
+        get:
+            controller: App\Controller\GetReceiversAction
+        post: ~

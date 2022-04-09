@@ -1,14 +1,15 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    uploads_directory: '%kernel.project_dir%/uploads'
 services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $awsAccessKey: '%env(AWS_ACCESS_KEY)%'
+            $awsSecretKey: '%env(AWS_SECRET_KEY)%'
+            $awsBucket: '%env(AWS_BUCKET_NAME)%'
+            $awsBucketHost: '%env(AWS_S3_BUCKET_HOST)%'
+            $cloudFrontHost: '%env(AWS_CLOUDFRONT_HOST)%'
 
     App\:
         resource: '../src/'

@@ -1,0 +1,6 @@
+App\Entity\Location:
+    attributes:
+        id:
+            groups: ['location:read']
+        name:
+            groups: ['location:read', 'location:create', 'location:update']

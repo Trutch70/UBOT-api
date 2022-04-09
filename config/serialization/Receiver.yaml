@@ -1,0 +1,12 @@
+App\Entity\Receiver:
+    attributes:
+        id:
+            groups: ['receiver:read']
+        name:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        description:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        bankAccount:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        location:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
