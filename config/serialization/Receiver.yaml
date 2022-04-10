@@ -10,3 +10,5 @@ App\Entity\Receiver:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         location:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        imagePath:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
