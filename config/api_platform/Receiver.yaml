@@ -13,7 +13,7 @@ App\Entity\Receiver:
             controller: App\Controller\PostReceiverImageAction
             deserialize: false
             write: false
-    collectonOperations:
+    collectionOperations:
         get:
             controller: App\Controller\GetReceiversAction
         post: ~
