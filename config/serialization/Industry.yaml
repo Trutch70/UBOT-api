@@ -1,0 +1,6 @@
+App\Entity\Industry:
+    attributes:
+        id:
+            groups: ['industry:read']
+        name:
+            groups: ['industry:read', 'industry:create', 'industry:update']

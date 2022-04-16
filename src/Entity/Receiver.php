@@ -28,6 +28,10 @@ class Receiver
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: true)]
     private ?Location $location;
 
+    #[ORM\ManyToOne(targetEntity: Industry::class)]
+    #[ORM\JoinColumn(name: 'industry_id', referencedColumnName: 'id', nullable: true)]
+    private Industry $industry;
+
     public function getId(): int
     {
         return $this->id;
@@ -86,5 +90,15 @@ class Receiver
     public function setLocation(?Location $location): void
     {
         $this->location = $location;
+    }
+
+    public function getIndustry(): Industry
+    {
+        return $this->industry;
+    }
+
+    public function setIndustry(Industry $industry): void
+    {
+        $this->industry = $industry;
     }
 }

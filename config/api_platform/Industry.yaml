@@ -1,0 +1,13 @@
+App\Entity\Industry:
+    itemOperations:
+        get:
+            path: /industries/{id}
+        patch:
+            path: /industries{id}
+        delete:
+            path: /industries/{id}
+    collectionOperations:
+        get:
+            path: /industries
+        post:
+            path: /industries

@@ -4,6 +4,7 @@ App\Entity\Receiver:
             groups:
                 - 'receiver:read'
                 - 'location:read'
+                - 'industry:read'
     itemOperations:
         get: ~
         patch: ~
