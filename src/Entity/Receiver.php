@@ -32,6 +32,12 @@ class Receiver
     #[ORM\JoinColumn(name: 'industry_id', referencedColumnName: 'id', nullable: true)]
     private Industry $industry;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $webPage;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $instagram;
+
     public function getId(): int
     {
         return $this->id;
@@ -100,5 +106,25 @@ class Receiver
     public function setIndustry(Industry $industry): void
     {
         $this->industry = $industry;
+    }
+
+    public function getWebPage(): ?string
+    {
+        return $this->webPage;
+    }
+
+    public function setWebPage(?string $webPage): void
+    {
+        $this->webPage = $webPage;
+    }
+
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): void
+    {
+        $this->instagram = $instagram;
     }
 }
