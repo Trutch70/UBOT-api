@@ -38,6 +38,9 @@ class Receiver
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $instagram;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $internationalShipping;
+
     public function getId(): int
     {
         return $this->id;
@@ -126,5 +129,15 @@ class Receiver
     public function setInstagram(?string $instagram): void
     {
         $this->instagram = $instagram;
+    }
+
+    public function isInternationalShipping(): bool
+    {
+        return $this->internationalShipping;
+    }
+
+    public function setInternationalShipping(bool $internationalShipping): void
+    {
+        $this->internationalShipping = $internationalShipping;
     }
 }
