@@ -14,3 +14,5 @@ App\Entity\Receiver:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         industry:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        internationalShipping:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
