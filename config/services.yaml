@@ -23,3 +23,12 @@ services:
         tags: [ 'controller.service_arguments' ]
 
     'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter': ~
+
+    Doctrine\Migrations\Version\DbalMigrationFactory: ~
+    App\Doctrine\MigrationFactoryDecorator:
+        decorates: Doctrine\Migrations\Version\DbalMigrationFactory
+        arguments:
+          [
+              '@App\Doctrine\MigrationFactoryDecorator.inner',
+              '@Doctrine\Common\Persistence\ManagerRegistry',
+          ]

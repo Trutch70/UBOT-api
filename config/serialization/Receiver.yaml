@@ -20,3 +20,5 @@ App\Entity\Receiver:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         instagram:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        links:
+            groups: ['receiver:read']

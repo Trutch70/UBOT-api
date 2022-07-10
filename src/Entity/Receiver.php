@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -40,6 +41,9 @@ class Receiver
 
     #[ORM\Column(type: 'boolean')]
     private bool $internationalShipping;
+
+    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Link::class)]
+    private Collection $links;
 
     public function getId(): int
     {
@@ -139,5 +143,23 @@ class Receiver
     public function setInternationalShipping(bool $internationalShipping): void
     {
         $this->internationalShipping = $internationalShipping;
+    }
+
+    /**
+     * @return Collection<Link>
+     */
+    public function getLinks(): Collection
+    {
+        return $this->links;
+    }
+
+    public function setLinks(Collection $links): void
+    {
+        $this->links = $links;
+    }
+
+    public function addLink(Link $link): void
+    {
+        $this->links->add($link);
     }
 }
