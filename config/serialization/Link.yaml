@@ -1,0 +1,8 @@
+App\Entity\Link:
+    attributes:
+        id:
+            groups: ['link:read']
+        name:
+            groups: ['link:read', 'link:create', 'link:update']
+        url:
+            groups: ['link:read', 'link:create', 'link:update']

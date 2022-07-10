@@ -5,6 +5,7 @@ App\Entity\Receiver:
                 - 'receiver:read'
                 - 'location:read'
                 - 'industry:read'
+                - 'link:read'
     itemOperations:
         get: ~
         patch: ~
