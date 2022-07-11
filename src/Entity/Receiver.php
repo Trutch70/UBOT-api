@@ -39,6 +39,9 @@ class Receiver
     #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Link::class)]
     private Collection $links;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $donationDescription;
+
     public function getId(): int
     {
         return $this->id;
@@ -135,5 +138,15 @@ class Receiver
     public function addLink(Link $link): void
     {
         $this->links->add($link);
+    }
+
+    public function getDonationDescription(): string
+    {
+        return $this->donationDescription;
+    }
+
+    public function setDonationDescription(string $donationDescription): void
+    {
+        $this->donationDescription = $donationDescription;
     }
 }
