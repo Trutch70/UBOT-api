@@ -16,9 +16,7 @@ App\Entity\Receiver:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         internationalShipping:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
-        webPage:
-            groups: ['receiver:read', 'receiver:create', 'receiver:update']
-        instagram:
-            groups: ['receiver:read', 'receiver:create', 'receiver:update']
         links:
             groups: ['receiver:read']
+        donationDescription:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
