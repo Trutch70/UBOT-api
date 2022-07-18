@@ -1,0 +1,5 @@
+App\Entity\Link:
+    collectionOperations:
+        post: ~
+    itemOperations:
+        get: ~

@@ -6,3 +6,5 @@ App\Entity\Link:
             groups: ['link:read', 'link:create', 'link:update']
         url:
             groups: ['link:read', 'link:create', 'link:update']
+        receiver:
+            groups: ['link:create']
