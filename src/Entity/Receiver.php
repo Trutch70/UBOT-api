@@ -42,6 +42,9 @@ class Receiver
     #[ORM\Column(type: 'string', length: 255)]
     private string $donationDescription;
 
+    #[ORM\Column(type: 'simple_array')]
+    private array $images;
+
     public function getId(): int
     {
         return $this->id;
@@ -148,5 +151,20 @@ class Receiver
     public function setDonationDescription(string $donationDescription): void
     {
         $this->donationDescription = $donationDescription;
+    }
+
+    public function getImages(): array
+    {
+        return $this->images;
+    }
+
+    public function setImages(array $images): void
+    {
+        $this->images = $images;
+    }
+
+    public function addImage(string $image): void
+    {
+        $this->images[] = $image;
     }
 }

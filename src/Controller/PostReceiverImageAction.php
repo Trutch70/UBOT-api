@@ -40,7 +40,7 @@ class PostReceiverImageAction
         $objectUrl = $this->uploader->upload($uploadedFile);
         $imagePath = $this->imagePathToCFConverter->getConvertedUrl($objectUrl);
 
-        $data->setImagePath($imagePath);
+        $data->addImage($imagePath);
 
         $this->registry->getManager()->persist($data);
         $this->registry->getManager()->flush();

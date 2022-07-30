@@ -20,3 +20,5 @@ App\Entity\Receiver:
             groups: ['receiver:read']
         donationDescription:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        images:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
