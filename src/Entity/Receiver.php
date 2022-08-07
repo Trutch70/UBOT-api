@@ -26,12 +26,8 @@ class Receiver
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $imagePath = null;
 
-    #[ORM\ManyToOne(targetEntity: Location::class)]
-    #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: true)]
-    private ?Location $location;
-
     #[ORM\ManyToMany(targetEntity: Location::class)]
-    private Collection $locations;
+    private iterable $locations;
 
     #[ORM\ManyToOne(targetEntity: Industry::class)]
     #[ORM\JoinColumn(name: 'industry_id', referencedColumnName: 'id', nullable: true)]
@@ -104,16 +100,6 @@ class Receiver
         $this->imagePath = $imagePath;
     }
 
-    public function getLocation(): ?Location
-    {
-        return $this->location;
-    }
-
-    public function setLocation(?Location $location): void
-    {
-        $this->location = $location;
-    }
-
     public function getIndustry(): Industry
     {
         return $this->industry;
@@ -177,12 +163,12 @@ class Receiver
         $this->images[] = $image;
     }
 
-    public function getLocations(): Collection
+    public function getLocations(): iterable
     {
         return $this->locations;
     }
 
-    public function setLocations(Collection $locations): void
+    public function setLocations(iterable $locations): void
     {
         $this->locations = $locations;
     }
