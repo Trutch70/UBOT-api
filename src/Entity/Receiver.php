@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,6 +30,9 @@ class Receiver
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: true)]
     private ?Location $location;
 
+    #[ORM\ManyToMany(targetEntity: Location::class)]
+    private Collection $locations;
+
     #[ORM\ManyToOne(targetEntity: Industry::class)]
     #[ORM\JoinColumn(name: 'industry_id', referencedColumnName: 'id', nullable: true)]
     private Industry $industry;
@@ -42,8 +46,13 @@ class Receiver
     #[ORM\Column(type: 'string', length: 255)]
     private string $donationDescription;
 
-    #[ORM\Column(type: 'simple_array')]
+    #[ORM\Column(type: 'simple_array', nullable: true)]
     private array $images;
+
+    public function __construct()
+    {
+        $this->locations = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -166,5 +175,15 @@ class Receiver
     public function addImage(string $image): void
     {
         $this->images[] = $image;
+    }
+
+    public function getLocations(): Collection
+    {
+        return $this->locations;
+    }
+
+    public function setLocations(Collection $locations): void
+    {
+        $this->locations = $locations;
     }
 }
