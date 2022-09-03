@@ -45,6 +45,9 @@ class Receiver
     #[ORM\Column(type: 'simple_array', nullable: true)]
     private array $images;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $order;
+
     public function __construct()
     {
         $this->locations = new ArrayCollection();
@@ -171,5 +174,15 @@ class Receiver
     public function setLocations(iterable $locations): void
     {
         $this->locations = $locations;
+    }
+
+    public function getOrder(): ?int
+    {
+        return $this->order;
+    }
+
+    public function setOrder(?int $order): void
+    {
+        $this->order = $order;
     }
 }
