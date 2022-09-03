@@ -16,19 +16,6 @@ class ReceiverRepository extends EntityRepository
         parent::__construct($em, new ClassMetadata(Receiver::class));
     }
 
-    public function findRandomPaged(int $page, int $limit): array
-    {
-        $offset = ($page - 1) * $limit;
-
-        return $this->createQueryBuilder('r')
-            ->orderBy('RAND()')
-            ->setMaxResults($limit)
-            ->setFirstResult($offset)
-            ->getQuery()
-            ->execute()
-            ;
-    }
-
     public function findPaged(int $page, int $limit): array
     {
         $offset = ($page - 1) * $limit;
