@@ -25,6 +25,7 @@ class ReceiverRepository extends EntityRepository
             ->addSelect(sprintf('CASE WHEN %s.position IS NULL THEN 1 ELSE 0 END as HIDDEN position_is_null', $alias))
             ->addOrderBy('position_is_null', 'ASC')
             ->addOrderBy(sprintf('%s.position', $alias), 'ASC')
+            ->addOrderBy(sprintf('%s.id', $alias), 'ASC')
         ;
     }
 
