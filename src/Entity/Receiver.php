@@ -46,7 +46,7 @@ class Receiver
     private array $images;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $order;
+    private ?int $position;
 
     public function __construct()
     {
@@ -176,13 +176,13 @@ class Receiver
         $this->locations = $locations;
     }
 
-    public function getOrder(): ?int
+    public function getPosition(): ?int
     {
-        return $this->order;
+        return $this->position;
     }
 
-    public function setOrder(?int $order): void
+    public function setPosition(?int $position): void
     {
-        $this->order = $order;
+        $this->position = $position;
     }
 }

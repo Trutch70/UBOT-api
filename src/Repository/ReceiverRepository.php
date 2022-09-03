@@ -17,7 +17,7 @@ class ReceiverRepository extends EntityRepository
         parent::__construct($em, new ClassMetadata(Receiver::class));
     }
 
-    public function createQueryBuilder($alias, $indexBy = null): QueryBuilder
+    public function createOrderedQueryBuilder($alias, $indexBy = null): QueryBuilder
     {
         return $this->_em->createQueryBuilder()
             ->select($alias)
@@ -32,7 +32,7 @@ class ReceiverRepository extends EntityRepository
     {
         $offset = ($page - 1) * $limit;
 
-        return $this->createQueryBuilder('r')
+        return $this->createOrderedQueryBuilder('r')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
             ->getQuery()
