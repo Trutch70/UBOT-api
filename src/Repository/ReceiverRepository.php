@@ -22,9 +22,9 @@ class ReceiverRepository extends EntityRepository
         return $this->_em->createQueryBuilder()
             ->select($alias)
             ->from($this->_entityName, $alias, $indexBy)
-            ->addSelect(sprintf('CASE WHEN %s.order IS NULL THEN 1 ELSE 0 END as HIDDEN order_is_null', $alias))
-            ->addOrderBy('order_is_null', 'ASC')
-            ->addOrderBy(sprintf('%s.order', $alias), 'ASC')
+            ->addSelect(sprintf('CASE WHEN %s.position IS NULL THEN 1 ELSE 0 END as HIDDEN position_is_null', $alias))
+            ->addOrderBy('position_is_null', 'ASC')
+            ->addOrderBy(sprintf('%s.position', $alias), 'ASC')
         ;
     }
 
