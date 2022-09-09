@@ -42,6 +42,10 @@ class ApiJsonAuthenticator extends AbstractAuthenticator implements Authenticati
             new CustomCredentials(function ($password, User $user) {
                 $hasher = $this->hasherFactory->getPasswordHasher($user);
 
+                if (!$user->getPassword()) {
+                    return false;
+                }
+
                 return $hasher->verify($user->getPassword(), $password, $user->getSalt());
             }, $body['password'])
         );

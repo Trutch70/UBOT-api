@@ -51,6 +51,10 @@ class ApiKeyAuthenticator extends AbstractAuthenticator implements Authenticatio
             new CustomCredentials(function ($apiToken, User $user) {
                 $salt = $user->getSalt();
 
+                if (!$user->getApiKey()) {
+                    return false;
+                }
+
                 $hasher = $this->hasherFactory->getPasswordHasher($user);
                 return $hasher->verify($user->getApiKey(), $apiToken, $salt);
             }, $apiToken)
