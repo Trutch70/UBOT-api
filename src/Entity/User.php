@@ -4,25 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ApiResource(
-    collectionOperations: [
-        'get' => [
-            'security' => false,
-        ]
-    ],
-    itemOperations: [
-        'get' => [
-            'security' => false,
-        ]
-    ],
-    attributes: ['security' => 'is_granted("ROLE_ADMIN")'],
-)]
 #[ORM\Entity]
-class User implements UserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue(strategy: 'AUTO')]
     private int $id;
@@ -30,11 +17,14 @@ class User implements UserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private string $username;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $apiKey;
 
     #[ORM\Column(type: 'array')]
     private array $roles;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private string $password;
 
     public function getId(): int
     {
@@ -56,14 +46,14 @@ class User implements UserInterface
         $this->roles = $roles;
     }
 
-    public function getPassword(): string
+    public function getApiKey(): ?string
     {
         return $this->apiKey;
     }
 
-    public function setPassword(string $password): void
+    public function setApiKey(?string $apiKey): void
     {
-        $this->apiKey = $password;
+        $this->apiKey = $apiKey;
     }
 
     public function getSalt()
@@ -83,5 +73,15 @@ class User implements UserInterface
     public function setUsername(string $username): void
     {
         $this->username = $username;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 }

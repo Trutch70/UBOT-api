@@ -1,0 +1,7 @@
+App\Entity\User:
+    itemOperations:
+        get: ~
+    collectionOperations:
+        post:
+            controller: App\Controller\UserCreateAction
+            security: is_granted('ROLE_SUPER_ADMIN')

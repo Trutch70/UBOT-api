@@ -9,12 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GetReceiversAction
 {
-    private ReceiverRepository $repository;
-
-    public function __construct(ReceiverRepository $repository)
-    {
-        $this->repository = $repository;
-    }
+    public function __construct(private ReceiverRepository $repository) {}
 
     public function __invoke(Request $request): array
     {

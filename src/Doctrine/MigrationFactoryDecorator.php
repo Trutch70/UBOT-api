@@ -10,17 +10,10 @@ use Doctrine\Migrations\Version\MigrationFactory;
 
 class MigrationFactoryDecorator implements MigrationFactory
 {
-    private ManagerRegistry $managerRegistry;
-
-    private MigrationFactory $migrationFactory;
-
     public function __construct(
-        MigrationFactory $migrationFactory,
-        ManagerRegistry $managerRegistry
-    ) {
-        $this->migrationFactory = $migrationFactory;
-        $this->managerRegistry = $managerRegistry;
-    }
+        private MigrationFactory $migrationFactory,
+        private ManagerRegistry $managerRegistry
+    ) {}
 
     public function createVersion(string $migrationClassName): AbstractMigration
     {

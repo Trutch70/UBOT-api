@@ -18,4 +18,6 @@ App\Entity\Receiver:
     collectionOperations:
         get:
             controller: App\Controller\GetReceiversAction
-        post: ~
+        post:
+            denormalization_context:
+                groups: ['receiver:create', 'link:create']

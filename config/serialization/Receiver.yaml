@@ -17,8 +17,10 @@ App\Entity\Receiver:
         internationalShipping:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         links:
-            groups: ['receiver:read']
+            groups: ['receiver:read', 'receiver:create']
         donationDescription:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']
         images:
+            groups: ['receiver:read', 'receiver:create', 'receiver:update']
+        position:
             groups: ['receiver:read', 'receiver:create', 'receiver:update']

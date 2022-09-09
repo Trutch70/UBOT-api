@@ -40,4 +40,24 @@ class ReceiverRepository extends EntityRepository
             ->execute()
         ;
     }
+
+    /**
+     * @return array|Receiver[]
+     */
+    public function findByPositionInBetween(?int $start, ?int $end): array
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        if (null !== $start) {
+            $qb->andWhere('r.position > :start');
+            $qb->setParameter('start', $start);
+        }
+
+        if (null !== $end) {
+            $qb->andWhere('r.position < :end');
+            $qb->setParameter('end', $end);
+        }
+
+        return $qb->getQuery()->execute();
+    }
 }

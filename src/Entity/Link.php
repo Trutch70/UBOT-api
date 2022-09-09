@@ -18,7 +18,7 @@ class Link
     #[ORM\Column(type: 'string', length: 255)]
     private string $url;
 
-    #[ORM\ManyToOne(targetEntity: Receiver::class, inversedBy: 'links')]
+    #[ORM\ManyToOne(targetEntity: Receiver::class, cascade: ['persist'], inversedBy: 'links')]
     private Receiver $receiver;
 
     public function getId(): int

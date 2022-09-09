@@ -14,20 +14,11 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class PostReceiverImageAction
 {
-    private S3Uploader $uploader;
-    private ManagerRegistry $registry;
-    private S3ImagePathToCFConverter $imagePathToCFConverter;
-
     public function __construct(
-        S3Uploader $uploader,
-        ManagerRegistry $registry,
-        S3ImagePathToCFConverter $imagePathToCFConverter
-    )
-    {
-        $this->uploader = $uploader;
-        $this->registry = $registry;
-        $this->imagePathToCFConverter = $imagePathToCFConverter;
-    }
+        private S3Uploader $uploader,
+        private ManagerRegistry $registry,
+        private S3ImagePathToCFConverter $imagePathToCFConverter
+    ) {}
 
     public function __invoke(Request $request, Receiver $data): Receiver
     {

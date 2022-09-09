@@ -6,14 +6,7 @@ namespace App\Service;
 
 class S3ImagePathToCFConverter
 {
-    private string $awsBucketHost;
-    private string $cloudFrontHost;
-
-    public function __construct(string $awsBucketHost, string $cloudFrontHost)
-    {
-        $this->awsBucketHost = $awsBucketHost;
-        $this->cloudFrontHost = $cloudFrontHost;
-    }
+    public function __construct(private string $awsBucketHost, private string $cloudFrontHost) {}
 
     public function getConvertedUrl(string $s3Url): string
     {

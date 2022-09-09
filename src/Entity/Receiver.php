@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -21,7 +20,7 @@ class Receiver
     private string $description;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private string $bankAccount;
+    private string $bankAccount = "";
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $imagePath = null;
@@ -34,23 +33,24 @@ class Receiver
     private Industry $industry;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $internationalShipping;
+    private bool $internationalShipping = true;
 
-    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Link::class)]
-    private Collection $links;
+    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Link::class, cascade: ['persist'])]
+    private iterable $links;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $donationDescription;
 
     #[ORM\Column(type: 'simple_array', nullable: true)]
-    private array $images;
+    private array $images = [];
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $position;
+    private ?int $position = null;
 
     public function __construct()
     {
         $this->locations = new ArrayCollection();
+        $this->links = new ArrayCollection();
     }
 
     public function getId(): int
@@ -124,14 +124,14 @@ class Receiver
     }
 
     /**
-     * @return Collection<Link>
+     * @return iterable<Link>
      */
-    public function getLinks(): Collection
+    public function getLinks(): iterable
     {
         return $this->links;
     }
 
-    public function setLinks(Collection $links): void
+    public function setLinks(iterable $links): void
     {
         $this->links = $links;
     }

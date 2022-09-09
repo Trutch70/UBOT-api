@@ -10,6 +10,7 @@ services:
             $awsBucket: '%env(AWS_BUCKET_NAME)%'
             $awsBucketHost: '%env(AWS_S3_BUCKET_HOST)%'
             $cloudFrontHost: '%env(AWS_CLOUDFRONT_HOST)%'
+            $apiSalt: '%env(API_HASH)%'
 
     App\:
         resource: '../src/'

@@ -5,23 +5,19 @@ declare(strict_types=1);
 namespace App\Service;
 
 use Aws\S3\S3Client;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\{HttpFoundation\File\UploadedFile, String\Slugger\SluggerInterface};
 
 class S3Uploader
 {
-    private SluggerInterface $slugger;
     private S3Client $s3Client;
-    private string $awsBucket;
 
     public function __construct(
-        string           $awsBucket,
-        string           $awsAccessKey,
-        string           $awsSecretKey,
-        SluggerInterface $slugger
+        string                   $awsAccessKey,
+        string                   $awsSecretKey,
+        private string           $awsBucket,
+        private SluggerInterface $slugger,
     )
     {
-        $this->slugger = $slugger;
         $this->s3Client = new S3Client([
             'region' => 'eu-central-1',
             'version' => 'latest',
@@ -30,7 +26,6 @@ class S3Uploader
                 'secret' => $awsSecretKey,
             ],
         ]);
-        $this->awsBucket = $awsBucket;
     }
 
     public function upload(UploadedFile $file): string
