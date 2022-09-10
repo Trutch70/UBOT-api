@@ -25,7 +25,8 @@ class ApiLoginAction extends AbstractController
         $token = $this->JWTService->encode(['username' => $user->getUsername()]);
 
         return $this->json([
-            'token' => $token
+            'token' => $token,
+            'username' => $user->getUsername(),
         ]);
     }
 }
