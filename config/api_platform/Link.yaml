@@ -3,3 +3,7 @@ App\Entity\Link:
         post: ~
     itemOperations:
         get: ~
+        delete: ~
+        patch:
+            denormalization_context:
+                groups: ['link:update']

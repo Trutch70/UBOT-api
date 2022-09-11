@@ -8,7 +8,9 @@ App\Entity\Receiver:
                 - 'link:read'
     itemOperations:
         get: ~
-        patch: ~
+        patch:
+            denormalization_context:
+                groups: ['receiver:edit']
         post_image:
             method: POST
             path: /receivers/{id}/image
