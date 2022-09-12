@@ -10,7 +10,7 @@ App\Entity\Receiver:
         get: ~
         patch:
             denormalization_context:
-                groups: ['receiver:edit']
+                groups: ['receiver:update']
         post_image:
             method: POST
             path: /receivers/{id}/image
